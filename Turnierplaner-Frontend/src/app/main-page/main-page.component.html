@@ -1,0 +1,11 @@
+<div style="text-align:center">
+    <mat-card>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let tournament of tournaments$ | async" (click)="redirectFunction('/preStartTournament', tournament.tournamentId)">{{tournament.tournamentName}}</mat-list-item>
+        </mat-nav-list>
+
+      </mat-card>
+      <button mat-fab color="primary" style="float: right"  (click)="redirectFunction('/createTournament')">
+        <mat-icon>add</mat-icon>
+      </button>
+</div>

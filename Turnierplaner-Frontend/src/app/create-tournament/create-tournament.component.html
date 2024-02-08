@@ -1,0 +1,51 @@
+<html>
+<mat-card>
+  <div style="height:90vh;">
+    <div fxLayout="column" style="height:20%;">
+      <div fxLayout="row" fxFill>
+        <div fxFill>
+          <mat-horizontal-stepper linear #stepper labelPosition="bottom" class="stepper">
+            <mat-step [stepControl]="createTournamentForm">
+              <ng-template matStepLabel>Konfiguration</ng-template>
+              <div fxLayout="column" style="height:60%;">
+                <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+                  <div fxFlex="50">
+                    <form #createTournamentForm="ngForm" class="example-form" (ngSubmit)="createTournament(createTournamentForm, stepper)" novalidate>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Turniername" name="tournamentName" ngModel required #tournamentName="ngModel">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="picker" placeholder="Startdatum" name="tournamentDate" ngModel required #tournamentDate="ngModel">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <mat-card-actions align="end">
+                <button mat-fab class="btnAbort" (click)="redirectFunction('/')">
+                  <mat-icon>close</mat-icon>
+                </button>
+                <div fxFlex></div>
+                <button mat-fab class="btnAccept" (click)="createTournamentForm.ngSubmit.emit()" style="float: right">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+              <ng-template matStepLabel>TN eintragen</ng-template>
+              <app-add-participant></app-add-participant>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Spielgrösse festlegen</ng-template>
+              <app-add-participant></app-add-participant>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+</html>

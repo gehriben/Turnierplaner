@@ -1,0 +1,94 @@
+mat-card{
+    margin-top:2%;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+.example-form {
+    width: 100%;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.example-full-width {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.example-half-width {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.inputPLZ {
+    margin-top: 10px;
+    width: 30%;
+}
+
+.inputWohnort {
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 65%;
+}
+
+.btnAddTN {
+    margin-top: 10px;
+    background-color: green;
+    float: right;
+    width: 40%;
+    color: white;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.btnAddTN:hover {
+    background-color: rgb(181, 241, 181);
+    color: black;
+  }
+
+.listTN {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(128, 128, 128, 0.349);
+    height: 100%;
+}
+
+.listTnHeader {
+    border-top: solid;
+    border-right: solid;
+    border-left: solid;
+    border-width: 1px;
+    border-color: rgba(128, 128, 128, 0.349);
+    background-color: rgba(128, 128, 128, 0.349);
+}
+
+.stepper {
+    background-color: #FAFAFA;
+}
+
+.btnAbort {
+    margin-top: 1%;
+    background-color: red;
+    float: left;
+}
+
+.btnAccept {
+    margin-top: 1%;
+    background-color: green;
+    float: right;
+}
+
+.btnBack {
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: #FAFAFA;
+    color: black;
+    border-style: solid;
+    float: right;
+}

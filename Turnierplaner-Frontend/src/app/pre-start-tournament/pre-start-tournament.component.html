@@ -1,0 +1,166 @@
+<div style="text-align:center">
+
+
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav mode="side" opened>
+            <mat-selection-list>
+                <mat-list-item (click)="redirectFunction('/?')">Konfigurieren</mat-list-item>
+            </mat-selection-list>
+            <mat-selection-list>
+                <mat-list-item (click)="redirectFunction('/?')">TN Anpassen</mat-list-item>
+            </mat-selection-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div style="height:90vh;">
+                <div fxLayout="column" style="height:20%;">
+                    <div fxLayout="row" fxFill>
+                        <div class="one" fxFill>
+                            <mat-horizontal-stepper labelPosition="bottom" class="stepper">
+                                <mat-step [stepControl]="firstFormGroup">
+                                    <ng-template matStepLabel>Vor dem Start</ng-template>
+                                    <div fxLayout="column" style="height:60%;">
+                                        <div fxLayout="row" fxFill>
+
+
+                                            <form class="form">
+
+                                                <mat-form-field class="inputTurniername">
+                                                    <input matInput placeholder="Turniername" value="{{ tournament.tournamentName }}">
+                                                </mat-form-field>
+                                                <button mat-button class="btnAddTN">Turniername ändern</button>
+                                            </form>
+
+                                        </div>
+
+                                        <mat-toolbar class="listTnHeader">Teilnehmerliste</mat-toolbar>
+                                        <mat-list class="listTN">
+                                            <div *ngFor="let participant of participants | async">
+                                            <mat-list-item >{{participant.participantFirstName}} {{participant.participantLastName}} </mat-list-item>
+                                            <mat-divider></mat-divider>
+                                            </div>
+                                        </mat-list>
+
+                                        <div class="two" fxFlex="20"></div>
+
+                                    </div>
+                                    <div fxLayout="column" style="height:10%;">
+                                        <div fxLayout="row" fxFill>
+                                            <div class="two" fxFill>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div fxLayout="column" style="height:5%;">
+                                        <div fxLayout="row" fxFill>
+                                            <div class="two" fxFill>
+                                                <button mat-fab matStepperNext class="btnAccept">
+                                                    <mat-icon>check</mat-icon>
+                                                </button>
+                                                <button mat-fab class="btnAbort" (click)="redirectFunction('/')">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-step>
+                                <mat-step [stepControl]="secondFormGroup">
+                                    <ng-template matStepLabel>Durchführung</ng-template>
+                                    <div style="text-align:center">
+                                        <mat-card>
+                                            <h2>Spielergebnisse</h2>
+                                            <div fxLayout="column">
+                                                <mat-list role="list">
+                                                    <mat-list-item role="listitem" style="margin-top:15px;">
+                                                        <div fxLayout="row" fxFill>
+                                                            <div fxFlex="80">
+                                                                <div style="float:left; margin-top: 20px;">Name1 : Name2 </div>
+                                                            </div>
+                                                            <div fxFlex="80"></div>
+                                                            <mat-form-field appearance="outline" class="points">
+                                                                <mat-label>Pkt1</mat-label>
+                                                                <input matInput>
+                                                            </mat-form-field>
+                                                            <mat-form-field appearance="outline" class="points">
+                                                                <mat-label>Pkt2</mat-label>
+                                                                <input matInput>
+                                                            </mat-form-field>
+                                                        </div>
+
+                                                    </mat-list-item>
+
+
+                                                    <mat-list-item role="listitem" style="margin-top:15px;">
+                                                        <div fxLayout="row" fxFill>
+                                                            <div fxFlex="80">
+                                                                <div style="float:left; margin-top: 20px;">Name1 : Name2 </div>
+                                                            </div>
+                                                            <div fxFlex="80"></div>
+                                                            <mat-form-field appearance="outline" class="points">
+                                                                <mat-label>Pkt1</mat-label>
+                                                                <input matInput>
+                                                            </mat-form-field>
+                                                            <mat-form-field appearance="outline" class="points">
+                                                                <mat-label>Pkt2</mat-label>
+                                                                <input matInput>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </mat-list-item>
+
+                                                    <mat-list-item role="listitem" style="margin-top:15px;">
+                                                        <div fxLayout="row" fxFill>
+                                                            <div fxFlex="80">
+                                                                <div style="float:left; margin-top: 20px;">Name1 : Name2 </div>
+                                                            </div>
+                                                            <div fxFlex="80"></div>
+                                                            <mat-form-field appearance="outline" class="points">
+                                                                <mat-label>Pkt1</mat-label>
+                                                                <input matInput>
+                                                            </mat-form-field>
+                                                            <mat-form-field appearance="outline" class="points">
+                                                                <mat-label>Pkt2</mat-label>
+                                                                <input matInput>
+                                                            </mat-form-field>
+                                                        </div>
+
+                                                    </mat-list-item>
+
+                                                </mat-list>
+
+
+                                            </div>
+                                            <br>
+
+                                        </mat-card>
+
+                                    </div>
+                                    <div fxLayout="column">
+                                        <div fxLayout="row" fxFill>
+                                            <div class="two" fxFill>
+                                                <button mat-fab matStepperNext class="btnAccept">
+                                                    <mat-icon>check</mat-icon>
+                                                </button>
+                                                <button mat-fab matStepperPrevious class="btnBack">
+                                                    <mat-icon>arrow_back</mat-icon>
+                                                </button>
+                                                <button mat-fab class="btnAbort" (click)="redirectFunction('/')">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Abschliessen</ng-template>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Archivierung</ng-template>
+                                </mat-step>
+                            </mat-horizontal-stepper>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</div>

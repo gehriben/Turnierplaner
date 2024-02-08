@@ -1,0 +1,33 @@
+# Build matrix: Build on Ubuntu 18.04
+image:
+  - ubuntu-18.04-amd64
+
+environment:
+  matrix:
+    # Build with OpenJDK 11
+    - JDK_VERSION: zulu-11-amd64
+
+install:
+  # Use OpenJDK 11.
+  - sudo java_select $JDK_VERSION
+
+build_script:
+  # Build gradle
+  - gradle build -x test
+
+test_script:
+  - gradle check
+
+artifacts:
+  # Collect all JARs that have been built and upload them to the CI server. Can be downloaded via
+  # the UI. If you want to keep them longer than 6 months, deploy to Artifactory (not shown).
+  - path: "build/libs/*.jar"
+
+on_finish:
+  # Search the 'build' folder for all JUnit test reports and upload them to the CI server.
+  - sh: |
+      find "$APPVEYOR_BUILD_FOLDER/build" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.cloudlab.zhaw.ch/api/testresults/junit/$APPVEYOR_JOB_ID"
+
+
+# Use integers as build versions (1, 2, 3, …) instead of 1.0.X.
+version: "{build}"

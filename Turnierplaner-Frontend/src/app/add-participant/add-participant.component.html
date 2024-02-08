@@ -1,0 +1,66 @@
+<html>
+<div>
+  <div fxLayout="column">
+    <div fxLayout="row" fxFill>
+      <div fxFill>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column">
+    <div fxLayout="row" fxFill>
+      <div fxFlex="47">
+        <form class="example-form" #form="ngForm" (ngSubmit)="fillParticipantList(form)" novalidate>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Vorname" name="firstName" ngModel required #firstName="ngModel">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nachname" name="lastName" ngModel required #lastName="ngModel">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker" placeholder="Geburtsdatum" name="dateOfBirth" ngModel required #dateOfBirth="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="inputPLZ">
+            <input matInput placeholder="PLZ" name="plz" ngModel required #plz="ngModel">
+          </mat-form-field>
+
+          <mat-form-field class="inputWohnort">
+            <input matInput placeholder="Wohnort" name="residence" ngModel required #residence="ngModel">
+          </mat-form-field>
+
+
+          <button mat-button class="btnAddTN">TN hinzufügen</button>
+        </form>
+      </div>
+      <div fxFlex="6"></div>
+      <div fxFlex="47">
+        <mat-toolbar class="listTnHeader">Name</mat-toolbar>
+        <mat-list class="listTN">
+          <mat-list-item *ngFor="let participant of _participantList">
+            <p matLine>{{ participant.participantFirstName }}</p>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column">
+    <div fxLayout="row" fxFill>
+      <div class="two" fxFill>
+        <button mat-fab class="btnAccept" (click)="submitParticipants()">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-fab matStepperPrevious class="btnBack">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-fab class="btnAbort" (click)="redirectFunction('/')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
